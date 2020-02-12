@@ -12,7 +12,8 @@ EXAMPLE 1: A grammar for simple declaration statement. Carefully go through the 
 1. Save the below file as declaration.
 
 JLEX FILE
-'''
+
+```
 import java_cup.runtime.Symbol; 
 import java_cup.runtime.Scanner; 
 %% 
@@ -30,11 +31,12 @@ System.exit(0);
 [a-z][a-z0-9]* {System.out.println("LA "+yytext());
 return new Symbol(sym.ID,new String(yytext()));} 
 [\n\r] {System.out.println("LA"+ "EOF");return new Symbol(sym.EOFILE);} 
-'''
+```
+
 2. Type the following grammar and save the file as declaration.cup  for recognizing simple declaration statements in a text editor. 
 
 	CUP FILE
-'''
+```
 import java_cup.runtime.*; 
 	scan with {: return getScanner().next_token(); :};
 	terminal INT,STRING,SEMI,COMMA,ID, SPACE, EOFILE;
@@ -46,7 +48,7 @@ EOFILE{:System.exit(0);:} ;
 	decln::=type SPACE varlist SEMI;
 	type::=INT | STRING ;
 	varlist::=ID COMMA varlist | ID ;
-'''
+```
 
 3. At the command prompt, type the following command to generate the Jlex & Parser code
             in Java as
